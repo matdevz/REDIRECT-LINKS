@@ -10,4 +10,15 @@ const redirectLink = async (req, res) => {
 	}
 };
 
-module.exports = { redirectLink };
+const addLink = async (req, res) => {
+	const link = new Link(req.body);
+
+	try {
+		let doc = await link.save();
+		res.send(doc);
+	} catch (error) {
+		res.render('index', { error });
+	}
+};
+
+module.exports = { redirectLink, addLink };
