@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ALL Links</title>
+	</head>
+	<body>
+		<header>
+			<h1>Links Adicionados</h1>
+			<button>
+				<a href="/add">Adicionar Link</a>
+			</button>
+		</header>
+
+		<% links.forEach(link => { %>
+		<div id="<%=link._id%>">
+			<form method="POST" action="/<%=link._id%>?_method=DELETE">
+				<h2><%=link.title %></h2>
+				<p><%=link.description %></p>
+				<p><%=link.url %></p>
+				<button type="submit">Deletar</button>
+			</form>
+		</div>
+
+		<% }) %>
+
+		<script>
+			// async function deleteLink(id) {
+			// 	let response = await fetch('/' + id, {
+			// 		method: 'DELETE',
+			// 	});
+
+			// 	if (response.status === 200) {
+			// 		let linkId = await response.text();
+
+			// 		let elementLink = document.getElementById(id);
+
+			// 		elementLink.remove();
+			// 	} else {
+			// 		let erro = await response.json();
+			// 		alert('Houve um erro ao deletar o link');
+			// 		console.log(erro);
+			// 	}
+			// }
+		</script>
+	</body>
+</html>
