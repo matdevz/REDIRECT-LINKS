@@ -15,18 +15,22 @@
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
 		/>
-		<title>Add Link</title>
+		<title>Edit to link</title>
 	</head>
 	<body>
 		<header
 			class="d-flex justify-content-between rounded-bottom align-items-center mb-5 p-3 container bg-primary"
 		>
-			<h1 class="text-light">Add Link</h1>
+			<h1 class="text-light">Edit Link</h1>
 			<a href="/" class="btn btn-light">Back</a>
 		</header>
 
 		<main class="container">
-			<form class="d-flex flex-column" action="/" method="post">
+			<form
+				class="d-flex flex-column"
+				action="/edit/<%=body.id%>"
+				method="post"
+			>
 				<input
 					class="form-control mb-2"
 					type="text"
@@ -49,21 +53,8 @@
 					placeholder="Insira uma url"
 				/>
 
-				<button class="btn btn-primary">Add</button>
+				<button class="btn btn-primary">Edit</button>
 			</form>
-
-			<% if (error) { %>
-
-			<div
-				class="alert alert-danger d-flex align-items-center mt-4"
-				role="alert"
-			>
-				<i class="bi bi-exclamation-triangle"> <%= error.message %> </i>
-			</div>
-
-			<% } %>
 		</main>
 	</body>
 </html>
-
-<%= %>

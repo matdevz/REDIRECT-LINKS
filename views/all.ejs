@@ -4,27 +4,63 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>ALL Links</title>
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+		/>
+		<title>All Links</title>
 	</head>
 	<body>
-		<header>
-			<h1>Links Adicionados</h1>
-			<button>
-				<a href="/add">Adicionar Link</a>
-			</button>
+		<header
+			class="d-flex justify-content-between rounded-bottom align-items-center container bg-primary mb-5 p-3"
+		>
+			<h1 class="text-white">Links</h1>
+			<a class="btn btn-light" href="/add">Add Link</a>
 		</header>
 
-		<% links.forEach(link => { %>
-		<div id="<%=link._id%>">
-			<form method="POST" action="/<%=link._id%>?_method=DELETE">
-				<h2><%=link.title %></h2>
-				<p><%=link.description %></p>
-				<p><%=link.url %></p>
-				<button type="submit">Deletar</button>
-			</form>
-		</div>
+		<main class="container">
+			<% links.forEach(link => { %>
+			<div class="card p-4 mb-3" id="<%=link._id%>">
+				<form
+					class="d-flex justify-content-between align-items-center form-horizontal"
+					method="POST"
+					action="/<%=link._id%>?_method=DELETE"
+				>
+					<div class="d-flex flex-column">
+						<h2 class="card-title"><%=link.title %></h2>
+						<p class="text-justify text-uppercase">
+							<%=link.description %>
+						</p>
+						<p class="text-black-50"><%=link.url %></p>
+						<p class="text-info">
+							<i class="bi bi-bar-chart">
+								Clicks: <%=link.click %></i
+							>
+						</p>
+					</div>
 
-		<% }) %>
+					<div class="d-flex flex-column">
+						<a
+							class="btn btn-warning mb-1"
+							href="/edit/<%=link._id%>"
+							>Edit</a
+						>
+						<button type="submit" class="btn btn-danger">
+							Delete
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<% }) %>
+		</main>
 
 		<script>
 			// async function deleteLink(id) {
